@@ -16,41 +16,45 @@ const Nav = styled.nav`
   min-height: 4.8rem;
 
   padding: 0 1rem;
+
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 `;
 
 const NavLinks = styled.a`
   margin: 0 1rem;
 `;
 
-const Main = styled.main`
+const Main = styled.main(
+  ({ theme }) => `
   width: 100%;
 
   padding: 2rem;
 
   margin: auto;
 
-  margin-top: 2rem;
+  margin-top: 2rem;  
 
-  @media (min-width: 640px) {
+  @media ${theme.breakpoints.sm} {
     max-width: 640px;
   }
 
-  @media (min-width: 768px) {
+  @media ${theme.breakpoints.md} {
     max-width: 768px;
   }
 
-  @media (min-width: 1024px) {
+  @media ${theme.breakpoints.lg} {
     max-width: 1024px;
-  }
+  } 
 
-  @media (min-width: 1280px) {
+  @media ${theme.breakpoints.xl} {
     max-width: 1280px;
-  }
+  }   
 
-  @media (min-width: 1536px) {
+  @media ${theme.breakpoints.xxl} {
     max-width: 1536px;
-  }
-`;
+  }  
+`
+);
 
 const Footer = styled.footer`
   display: flex;

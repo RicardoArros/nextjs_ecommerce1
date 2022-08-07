@@ -15,8 +15,7 @@ export const lightTheme = {
   colors: {
     light: "#fff",
     dark: "#4C4C4C",
-    primary1: "#5EC2CC",
-    primary2: "#",
+    primary: "#5EC2CC",
 
     secondary1: "#502361",
     secondary2: "#632ce4",
@@ -24,8 +23,16 @@ export const lightTheme = {
     background1: "#EDFAFF",
     background2: "#4C4C4C",
 
+    neutral: "#E5E5E5",
+
     accent: "#5EC2CC",
     text1: "#4C4C4C",
+  },
+  // Border radius
+  borderRadius: {
+    radiusBtn: ".6rem",
+    radiusInput: ".4rem",
+    radiusFrame1: ".4rem",
   },
   // Spacing
   spacing: {
@@ -40,6 +47,6 @@ export const lightTheme = {
     md: "screen and (min-width: 768px)",
     lg: "screen and (min-width: 1024px)",
     xl: "screen and (min-width: 1280px)",
-    xxl: "screen and (min-width: 1366px)",
+    xxl: "screen and (min-width: 1536px)",
   },
 };
