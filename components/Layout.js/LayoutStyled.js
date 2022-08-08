@@ -35,7 +35,7 @@ const Main = styled.main(
   margin-top: 2rem;  
 
   @media ${theme.breakpoints.sm} {
-    max-width: 640px;
+    max-width: 640px;    
   }
 
   @media ${theme.breakpoints.md} {

@@ -15,9 +15,9 @@ export const lightTheme = {
   colors: {
     light: "#fff",
     dark: "#4C4C4C",
-    primary: "#5EC2CC",
+    primary: "#cc5e95",
 
-    secondary1: "#502361",
+    secondary1: "#5EC2CC",
     secondary2: "#632ce4",
 
     background1: "#EDFAFF",

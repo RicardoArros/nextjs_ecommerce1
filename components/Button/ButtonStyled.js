@@ -24,7 +24,7 @@ export const ButtonCompany = styled.button(
 
   padding: .8rem 1.2rem;
 
-  border: ${primary ? "none" : "1px solid " + theme.colors.accent}; 
+  border: ${primary ? "none" : "1px solid " + theme.colors.primary}; 
   border-radius: ${theme.borderRadius.radiusBtn};
 
   &:hover {
