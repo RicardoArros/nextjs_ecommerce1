@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// Layout container
 const LayoutWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@ const LayoutWrap = styled.div`
   min-height: 100vh;
 `;
 
+// Nav
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -20,10 +22,45 @@ const Nav = styled.nav`
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 `;
 
+const NavAction = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+
+  & svg {
+    font-size: 2.5rem;
+  }
+`;
+
+// Nav Cart
+const NavCart = styled.div`
+
+  & .cartIcon {
+    position: relative;
+  }
+`;
+
+const NavCartCount = styled.span`
+  position: absolute;
+  top: -.8rem;
+  right: -1rem;
+
+  background: ${({ theme }) => theme.colors.primary};
+
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.colors.light};
+  line-height: 1rem;
+
+  padding: 0.5rem 0.7rem;
+
+  border-radius: 50%;
+`;
+
 const NavLinks = styled.a`
   margin: 0 1rem;
 `;
 
+// Main
 const Main = styled.main(
   ({ theme }) => `
   width: 100%;
@@ -56,6 +93,7 @@ const Main = styled.main(
 `
 );
 
+// Footer
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
@@ -64,4 +102,13 @@ const Footer = styled.footer`
   height: 4rem;
 `;
 
-export { LayoutWrap, Nav, NavLinks, Main, Footer };
+export {
+  LayoutWrap,
+  Nav,
+  NavAction,
+  NavCart,
+  NavCartCount,
+  NavLinks,
+  Main,
+  Footer,
+};

@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 
 import { lightTheme } from "../styles/theme.config";
+import { StoreProvider } from "../utils/Store";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,7 +11,9 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={lightTheme}>
         <GlobalStyles />
         
-        <Component {...pageProps} />
+        <StoreProvider>
+          <Component {...pageProps} />
+        </StoreProvider>
       </ThemeProvider>
     </>
   );

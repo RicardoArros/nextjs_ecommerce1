@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { IoIosCart } from "react-icons/io";
 
 import Head from "next/head";
-
 import Link from "next/link";
 
-import { Nav, NavLinks, LayoutWrap, Main, Footer } from "./LayoutStyled";
+import { Store } from "../../utils/Store";
+
+import {
+  LayoutWrap,
+  Nav,
+  NavLinks,
+  NavAction,
+  NavCart,
+  NavCartCount,
+  Main,
+  Footer,
+} from "./LayoutStyled";
 
 const Layout = ({ title, children }) => {
+  //
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+
   return (
     <>
       <Head>
@@ -22,15 +38,27 @@ const Layout = ({ title, children }) => {
               <a>Ecommerce</a>
             </Link>
 
-            <div>
-              <Link href="/cart">
-                <NavLinks>Cart</NavLinks>
-              </Link>
+            <NavAction>
+              <NavCart>
+                <Link href="/cart">
+                  <NavLinks>
+                    <div className="cartIcon">
+                      <IoIosCart />
+
+                      {cart.cartItems.length > 0 && (
+                        <NavCartCount>
+                          {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                        </NavCartCount>
+                      )}
+                    </div>
+                  </NavLinks>
+                </Link>
+              </NavCart>
 
               <Link href="/login">
                 <NavLinks>Login</NavLinks>
               </Link>
-            </div>
+            </NavAction>
           </Nav>
         </header>
 
