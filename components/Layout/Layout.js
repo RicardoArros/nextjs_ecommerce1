@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { IoIosCart } from "react-icons/io";
 
@@ -20,8 +20,18 @@ import {
 
 const Layout = ({ title, children }) => {
   //
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+
+  //
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
+
+  //
+  useEffect(() => {
+    setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+
+    return () => {};
+  }, [cart.cartItems]);
 
   return (
     <>
@@ -45,10 +55,8 @@ const Layout = ({ title, children }) => {
                     <div className="cartIcon">
                       <IoIosCart />
 
-                      {cart.cartItems.length > 0 && (
-                        <NavCartCount>
-                          {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                        </NavCartCount>
+                      {cartItemsCount > 0 && (
+                        <NavCartCount>{cartItemsCount}</NavCartCount>
                       )}
                     </div>
                   </NavLinks>
