@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ import data from "../../utils/data";
 
 import { Store } from "../../utils/Store";
 
-import Layout from "../../components/Layout.js/Layout";
+import Layout from "../../components/Layout/Layout";
 import {
   ProductDetailContent,
   ProductDetailCTA,
@@ -25,6 +25,9 @@ import { ButtonCompany } from "../../components/Button/ButtonStyled";
 const ProductDetail = () => {
   //
   const { state, dispatch } = useContext(Store);
+
+  //
+  const router = useRouter();
 
   //
   const { query } = useRouter();
@@ -49,6 +52,8 @@ const ProductDetail = () => {
     }
 
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+
+    router.push("/cart");
   };
 
   return (

@@ -16,7 +16,7 @@ const ProductsCont = styled.div(
   @media ${theme.breakpoints.lg} {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-`
+  `
 );
 
 // Product Detail
@@ -29,10 +29,8 @@ const ProductDetailContent = styled.div(
 
   @media ${theme.breakpoints.md} {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.75rem;
-  }
-  
-  
+    gap: 2rem;
+  }    
   `
 );
 
@@ -51,8 +49,7 @@ const ProductDetailInfo = styled.div(
   & > h1 {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-  
+  }  
   `
 );
 
@@ -67,8 +64,7 @@ const ProductDetailCTAItem = styled.div(
   display: flex;
   justify-content: space-between;
 
-  width: 50%;
-  
+  width: 50%;  
   `
 );
 
@@ -103,5 +99,5 @@ export {
   ProductDetailImg,
   ProductDetailInfo,
   ProductDetailCTA,
-  ProductDetailCTAItem
+  ProductDetailCTAItem,
 };

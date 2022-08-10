@@ -35,6 +35,8 @@ const NavAction = styled.div`
 // Nav Cart
 const NavCart = styled.div`
 
+  cursor: pointer;
+
   & .cartIcon {
     position: relative;
   }

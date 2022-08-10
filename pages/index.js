@@ -1,11 +1,12 @@
-import Layout from "../components/Layout.js/Layout";
+import Layout from "../components/Layout/Layout";
+
 import ProductItem from "../components/Product/ProductItem";
 
 import { ProductsCont } from "../components/Product/ProductStyled";
 
 import data from "../utils/data";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <Layout title="Home Page">
@@ -17,4 +18,6 @@ export default function Home() {
       </Layout>
     </>
   );
-}
+};
+
+export default Home;
