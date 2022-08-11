@@ -39,7 +39,7 @@ const Cart = () => {
   };
 
   const checkoutRouteHandler = () => {
-    router.push("/shipping");
+    router.push("login?redirect=/shipping");
   };
 
   const updateCartHandler = (item, qty) => {

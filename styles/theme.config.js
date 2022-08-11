@@ -15,7 +15,7 @@ export const lightTheme = {
   colors: {
     light: "#fff",
     dark: "#4C4C4C",
-    
+
     primary: "#cc5e95",
 
     secondary1: "#5EC2CC",
@@ -26,13 +26,13 @@ export const lightTheme = {
 
     neutral: "#E5E5E5",
 
-    accent: "#5EC2CC",
+    error: "#de2f18",
     text1: "#4C4C4C",
   },
   // Border radius
   borderRadius: {
     radiusBtn: ".6rem",
-    radiusInput: ".4rem",
+    radiusInput: ".6rem",
     radiusFrame1: ".4rem",
   },
   // Spacing

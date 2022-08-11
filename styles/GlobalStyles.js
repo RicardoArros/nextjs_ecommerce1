@@ -20,15 +20,15 @@ html {
   }  
 
   body {    
-    font-family: ${(props) => props.theme.fonts.main};
+    font-family: ${({ theme }) => theme.fonts.main};
     font-size: 1.6rem;
-    color: ${( props ) => props.theme.colors.text1};
+    color: ${({ theme }) => theme.colors.text1};
 
     cursor: default;    
   }
 
   h1,h2,h3,h4,h5,h6,button {
-    font-family: ${(props ) => props.theme.fonts.title};
+    font-family: ${({ theme }) => theme.fonts.title};
     
   }   
 
@@ -57,7 +57,7 @@ html {
     cursor: pointer;
 
     &:focus {
-      //outline: none;
+      outline: solid #cc5e95;
     }
 
     &:active {
@@ -68,6 +68,20 @@ html {
 
   input, textarea, button {
     font-family: inherit;
+  }
+
+  input {
+    width: 100%;
+
+    padding: .6rem 1rem;
+
+    border-radius: ${({ theme }) => theme.borderRadius.radiusInput};
+    border: 1px solid ${({ theme }) => theme.colors.neutral};
+
+    &:focus {
+      outline: solid #cc5e95;
+    }
+
   }
 
 `;
