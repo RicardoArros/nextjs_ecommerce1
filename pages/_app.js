@@ -1,13 +1,16 @@
+import { SessionProvider } from "next-auth/react";
+
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyles from "../styles/GlobalStyles";
 
 import { lightTheme } from "../styles/theme.config";
+
 import { StoreProvider } from "../utils/Store";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <>
+    <SessionProvider session={session}>
       <ThemeProvider theme={lightTheme}>
         <GlobalStyles />
         
@@ -15,7 +18,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </StoreProvider>
       </ThemeProvider>
-    </>
+    </SessionProvider>
   );
 }
 

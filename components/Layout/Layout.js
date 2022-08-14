@@ -1,6 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 
+import { useSession } from "next-auth/react";
+
 import { IoIosCart } from "react-icons/io";
+
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import Head from "next/head";
 import Link from "next/link";
@@ -27,6 +32,9 @@ const Layout = ({ title, children }) => {
   const { cart } = state;
 
   //
+  const { status, data: session } = useSession();
+
+  //
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
 
@@ -40,6 +48,8 @@ const Layout = ({ title, children }) => {
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <ToastContainer position="bottom-center" limit={1} />
 
       <LayoutWrap>
         <header>
@@ -63,9 +73,15 @@ const Layout = ({ title, children }) => {
                 </Link>
               </NavCart>
 
-              <Link href="/login">
-                <NavLinks>Login</NavLinks>
-              </Link>
+              {status === "loading" ? (
+                "Loading"
+              ) : session?.user ? (
+                session.user.name
+              ) : (
+                <Link href="/login">
+                  <NavLinks>Login</NavLinks>
+                </Link>
+              )}
             </NavAction>
           </Nav>
         </header>

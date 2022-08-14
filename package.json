@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "js-cookie": "^3.0.1",
+    "mongoose": "^6.5.2",
     "next": "12.2.2",
+    "next-auth": "^4.10.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.34.0",
     "react-icons": "^4.4.0",
+    "react-toastify": "^9.0.8",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
