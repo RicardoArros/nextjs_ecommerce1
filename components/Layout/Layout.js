@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+
+import Cookies from "js-cookie";
 
 import { IoIosCart } from "react-icons/io";
+import { FaUserCircle } from "react-icons/fa";
 
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import Head from "next/head";
 import Link from "next/link";
@@ -21,11 +24,16 @@ import {
   NavCartCount,
   Main,
   Footer,
+  NavAccount,
 } from "./LayoutStyled";
+
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import DropdownLink from "../DropdownMenu/DropdownLink";
 
 const Layout = ({ title, children }) => {
   //
   const [cartItemsCount, setCartItemsCount] = useState(0);
+  const [open, setOpen] = useState(false);
 
   //
   const { state, dispatch } = useContext(Store);
@@ -40,6 +48,14 @@ const Layout = ({ title, children }) => {
 
     return () => {};
   }, [cart.cartItems]);
+
+  const logoutClickHandler = () => {
+    Cookies.remove("cart");
+
+    dispatch({ type: "CART_RESET" });
+
+    signOut({ callbackUrl: "/login" });
+  };
 
   return (
     <>
@@ -73,15 +89,33 @@ const Layout = ({ title, children }) => {
                 </Link>
               </NavCart>
 
-              {status === "loading" ? (
-                "Loading"
-              ) : session?.user ? (
-                session.user.name
-              ) : (
-                <Link href="/login">
-                  <NavLinks>Login</NavLinks>
-                </Link>
-              )}
+              <NavAccount>
+                {status === "loading" ? (
+                  "Loading"
+                ) : session?.user ? (
+                  <div className="accountIcon" onClick={() => setOpen(!open)}>
+                    <FaUserCircle />
+
+                    {open && (
+                      <DropdownMenu>
+                        <DropdownLink href="/profile">Perfil</DropdownLink>
+
+                        <DropdownLink href="/order-history">
+                          Ver historial
+                        </DropdownLink>
+
+                        <DropdownLink href="#" onClick={logoutClickHandler}>
+                          Logout
+                        </DropdownLink>
+                      </DropdownMenu>
+                    )}
+                  </div>
+                ) : (
+                  <Link href="/login">
+                    <NavLinks>Login</NavLinks>
+                  </Link>
+                )}
+              </NavAccount>
             </NavAction>
           </Nav>
         </header>

@@ -22,10 +22,15 @@ const Nav = styled.nav`
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 `;
 
+//
+const NavLinks = styled.a`
+  margin: 0 1rem;
+`;
+
 const NavAction = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 3rem;
 
   & svg {
     font-size: 2.5rem;
@@ -34,7 +39,6 @@ const NavAction = styled.div`
 
 // Nav Cart
 const NavCart = styled.div`
-
   cursor: pointer;
 
   & .cartIcon {
@@ -44,7 +48,7 @@ const NavCart = styled.div`
 
 const NavCartCount = styled.span`
   position: absolute;
-  top: -.8rem;
+  top: -0.8rem;
   right: -1rem;
 
   background: ${({ theme }) => theme.colors.primary};
@@ -58,9 +62,16 @@ const NavCartCount = styled.span`
   border-radius: 50%;
 `;
 
-const NavLinks = styled.a`
-  margin: 0 1rem;
+
+// Nav User Account
+const NavAccount = styled.div`
+  cursor: pointer;
+
+  & .accountIcon {
+    position: relative;
+  }
 `;
+
 
 // Main
 const Main = styled.main(
@@ -107,10 +118,11 @@ const Footer = styled.footer`
 export {
   LayoutWrap,
   Nav,
+  NavLinks,
   NavAction,
   NavCart,
   NavCartCount,
-  NavLinks,
+  NavAccount,
   Main,
   Footer,
 };
