@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-//
-const DropdownWrap = styled.div(
-  ({ theme }) => `
+// Dropdown cont
+const DropdownMenu = styled.div(
+  ({ theme, isOpen }) => `
 
   position: absolute;
-  bottom: -14rem;
-  right: 0;
+  top: 5rem;
+  // bottom: -14rem;
+  // right: 0;
 
+  transform: translateX(-85%);
   //transform-origin: top right;
 
   display: flex;
@@ -17,10 +19,17 @@ const DropdownWrap = styled.div(
   
   background: ${theme.colors.light};
 
+  //padding: 1rem;
+
   border-radius: ${theme.borderRadius.radiusFrame1};
 
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 
+  opacity: ${isOpen ? 1 : 0};
+
+  transition: all 1s ease-out;
+
+  overflow: hidden;
   `
 );
 
@@ -30,12 +39,17 @@ const DropdownLinkWrap = styled.div(
 
   padding: 1rem;
 
+  transition: background .5s;
+
+  &:not(:last-child) {
+    //margin-bottom: 1.4rem;
+  }
+
   &:hover {
     background-color: ${theme.colors.neutral}
   }
-
   
   `
 );
 
-export { DropdownWrap, DropdownLinkWrap };
+export { DropdownMenu, DropdownLinkWrap };

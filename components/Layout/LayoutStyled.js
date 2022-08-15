@@ -7,6 +7,8 @@ const LayoutWrap = styled.div`
   justify-content: space-between;
 
   min-height: 100vh;
+
+  overflow: hidden;
 `;
 
 // Nav
@@ -62,7 +64,6 @@ const NavCartCount = styled.span`
   border-radius: 50%;
 `;
 
-
 // Nav User Account
 const NavAccount = styled.div`
   cursor: pointer;
@@ -71,7 +72,6 @@ const NavAccount = styled.div`
     position: relative;
   }
 `;
-
 
 // Main
 const Main = styled.main(

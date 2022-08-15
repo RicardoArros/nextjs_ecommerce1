@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
-html {
+  html {
     box-sizing: border-box;
 
     font-size: 62.5%;
@@ -83,7 +83,6 @@ html {
     }
 
   }
-
 `;
 
 export default GlobalStyles;

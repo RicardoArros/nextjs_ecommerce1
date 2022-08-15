@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { signOut, useSession } from "next-auth/react";
 
@@ -27,8 +27,9 @@ import {
   NavAccount,
 } from "./LayoutStyled";
 
-import DropdownMenu from "../DropdownMenu/DropdownMenu";
+//import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import DropdownLink from "../DropdownMenu/DropdownLink";
+import { DropdownMenu } from "../DropdownMenu/DropdownMenuStyled";
 
 const Layout = ({ title, children }) => {
   //
@@ -43,18 +44,48 @@ const Layout = ({ title, children }) => {
   const { status, data: session } = useSession();
 
   //
+  let accountMenuRef = useRef();
+
+  //
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
 
     return () => {};
   }, [cart.cartItems]);
 
+  //Hide Account Menu Handler
+  useEffect(() => {
+    let accountMenuHandler = (e) => {
+      if (!accountMenuRef.current.contains(e.target)) {
+        hideDropdown();
+
+        //console.log(accountMenuRef.current);
+      }
+    };
+
+    document.addEventListener("mousedown", accountMenuHandler);
+
+    return () => {
+      document.removeEventListener("mousedown", accountMenuHandler);
+    };
+  }, []);
+
+  //
+  const showDropdown = () => {
+    setOpen(!open);
+  };
+
+  const hideDropdown = () => {
+    setOpen(false);
+  };
+
+  // Logout handler
   const logoutClickHandler = () => {
+    signOut({ callbackUrl: "/login" });
+
     Cookies.remove("cart");
 
     dispatch({ type: "CART_RESET" });
-
-    signOut({ callbackUrl: "/login" });
   };
 
   return (
@@ -89,26 +120,36 @@ const Layout = ({ title, children }) => {
                 </Link>
               </NavCart>
 
-              <NavAccount>
+              <NavAccount ref={accountMenuRef}>
                 {status === "loading" ? (
                   "Loading"
                 ) : session?.user ? (
-                  <div className="accountIcon" onClick={() => setOpen(!open)}>
+                  <div
+                    className="accountIcon"
+                    onClick={showDropdown}                    
+                    onMouseEnter={() => setOpen(true)}
+                  >
                     <FaUserCircle />
 
-                    {open && (
-                      <DropdownMenu>
-                        <DropdownLink href="/profile">Perfil</DropdownLink>
+                    {open ? (
+                      <>
+                        <DropdownMenu isOpen={open}>
+                          <DropdownLink href="#">
+                            ¡Hola {session.user.name}!
+                          </DropdownLink>
 
-                        <DropdownLink href="/order-history">
-                          Ver historial
-                        </DropdownLink>
+                          <DropdownLink href="/profile">Perfil</DropdownLink>
 
-                        <DropdownLink href="#" onClick={logoutClickHandler}>
-                          Logout
-                        </DropdownLink>
-                      </DropdownMenu>
-                    )}
+                          <DropdownLink href="/order-history">
+                            Ver historial
+                          </DropdownLink>
+
+                          <DropdownLink href="#" onClick={logoutClickHandler}>
+                            Logout
+                          </DropdownLink>
+                        </DropdownMenu>
+                      </>
+                    ) : null}
                   </div>
                 ) : (
                   <Link href="/login">
