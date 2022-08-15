@@ -12,12 +12,11 @@ export const Store = createContext();
 const initialState = {
   cart: Cookies.get("cart")
     ? JSON.parse(Cookies.get("cart"))
-    : { cartItems: [] },
+    : { cartItems: [], shippingAddress: {} },
 };
 
 //
 function reducer(state, action) {
-
   switch (action.type) {
     //
     case "CART_ADD_ITEM": {
@@ -50,7 +49,7 @@ function reducer(state, action) {
     }
 
     //
-    case "CART_RESET":
+    case "CART_RESET": {
       return {
         ...state,
         cart: {
@@ -59,6 +58,21 @@ function reducer(state, action) {
           paymentMethod: "",
         },
       };
+    }
+
+    //
+    case "SAVE_SHIPPING_ADDRESS": {
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: {
+            ...state.cart.shippingAddress,
+            ...action.payload,
+          },
+        },
+      };
+    }
 
     default:
       return state;

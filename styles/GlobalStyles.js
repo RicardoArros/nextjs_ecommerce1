@@ -73,7 +73,7 @@ const GlobalStyles = createGlobalStyle`
   input {
     width: 100%;
 
-    padding: .6rem 1rem;
+    padding: .7rem 1rem;
 
     border-radius: ${({ theme }) => theme.borderRadius.radiusInput};
     border: 1px solid ${({ theme }) => theme.colors.neutral};

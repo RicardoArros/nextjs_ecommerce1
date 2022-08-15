@@ -15,19 +15,14 @@ export const lightTheme = {
   colors: {
     light: "#fff",
     dark: "#4C4C4C",
-
     primary: "#cc5e95",
-
     secondary1: "#5EC2CC",
     secondary2: "#632ce4",
-
     background1: "#EDFAFF",
     background2: "#4C4C4C",
-
     neutral: "#E5E5E5",
-
-    error: "#de2f18",
     text1: "#4C4C4C",
+    error: "#de2f18",
   },
   // Border radius
   borderRadius: {

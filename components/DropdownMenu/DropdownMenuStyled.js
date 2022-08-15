@@ -17,9 +17,7 @@ const DropdownMenu = styled.div(
 
   min-width: 16rem; 
   
-  background: ${theme.colors.light};
-
-  //padding: 1rem;
+  background: ${theme.colors.light};  
 
   border-radius: ${theme.borderRadius.radiusFrame1};
 
@@ -30,6 +28,8 @@ const DropdownMenu = styled.div(
   transition: all 1s ease-out;
 
   overflow: hidden;
+
+  z-index: 3;
   `
 );
 
@@ -41,9 +41,7 @@ const DropdownLinkWrap = styled.div(
 
   transition: background .5s;
 
-  &:not(:last-child) {
-    //margin-bottom: 1.4rem;
-  }
+  &:not(:last-child) {}
 
   &:hover {
     background-color: ${theme.colors.neutral}
