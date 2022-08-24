@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-//
-
 // Checkout form
 const CheckoutForm = styled.form`
   margin: 0 auto;
@@ -23,9 +21,7 @@ const CheckoutFormItem = styled.div(
   & > p {
     font-size: 1.2rem;
     color: ${theme.colors.error};
-  }
-  
-   
+  }   
   `
 );
 
@@ -34,9 +30,13 @@ const CheckoutFormSubmit = styled.div(
 
   display: flex;
   justify-content: space-between;
+  gap: 3rem;
 
-  margin-bottom: 2rem;
-   
+  margin-bottom: 2rem;   
+
+  & > button {
+    //width: 30%;
+  }
   `
 );
 
@@ -75,11 +75,24 @@ const CheckoutWizardSteps = styled.div(
 `
 );
 
+//
+const CheckoutPayments = styled.div`
+  display: flex;
+  gap: 3rem;
+
+  margin-bottom: 3rem;
+
+  & > input {
+    width: unset;
+  }
+`;
+
 export {
   CheckoutWizardWrap,
   CheckoutWizardSteps,
   CheckoutForm,
   CheckoutFormTitle,
-  CheckoutFormItem, 
-  CheckoutFormSubmit
+  CheckoutFormItem,
+  CheckoutFormSubmit,
+  CheckoutPayments
 };

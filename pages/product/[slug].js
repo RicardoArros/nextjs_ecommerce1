@@ -77,11 +77,15 @@ const ProductDetail = () => {
               <li>
                 <h1>{product.name}</h1>
               </li>
+
               <li>Categoría: {product.category}</li>
+
               <li>Marca: {product.brand}</li>
+
               <li>
                 {product.rating} of {product.numReviews} reviews
               </li>
+              
               <li>Descripción: {product.description}</li>
             </ul>
 

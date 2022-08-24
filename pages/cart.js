@@ -141,8 +141,9 @@ const Cart = () => {
                       {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                     </div>
                   </li>
+                  
                   <li>
-                    <ButtonCompany onClick={checkoutRouteHandler}>
+                    <ButtonCompany onClick={checkoutRouteHandler} primary>
                       Check Out
                     </ButtonCompany>
                   </li>

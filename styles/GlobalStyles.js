@@ -81,7 +81,14 @@ const GlobalStyles = createGlobalStyle`
     &:focus {
       outline: solid #cc5e95;
     }
+  }
 
+  input[type=radio] {
+    padding: 2rem;
+
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    
   }
 `;
 
