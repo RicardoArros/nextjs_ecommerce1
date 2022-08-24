@@ -7,9 +7,10 @@ import {
   ProductCardInfo,
   ProductCardWrap,
 } from "./ProductStyled";
+
 import { ButtonCompany } from "../Button/ButtonStyled";
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, addToCartHandler }) => {
   return (
     <ProductCardWrap>
       <Link href={`/product/${product.slug}`}>
@@ -26,7 +27,11 @@ const ProductItem = ({ product }) => {
         <p>{product.brand}</p>
         <p>${product.price}</p>
 
-        <ButtonCompany type="button" primary>
+        <ButtonCompany
+          type="button"
+          primary
+          onClick={() => addToCartHandler(product)}
+        >
           Añadir al carrito
         </ButtonCompany>
       </ProductCardInfo>

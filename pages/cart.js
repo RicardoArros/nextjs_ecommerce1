@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 
-import dynamic from "next/dynamic";
-
 import { useRouter } from "next/router";
-
+import dynamic from "next/dynamic";
 import Link from "next/link";
-
 import Image from "next/image";
+
+import axios from "axios";
+
+import { TiTimes } from "react-icons/ti";
 
 import { Store } from "../utils/Store";
 
@@ -22,7 +23,6 @@ import {
   CartCheckoutCont,
 } from "../components/Cart/CartStyled";
 
-import { TiTimes } from "react-icons/ti";
 import { ButtonCompany } from "../components/Button/ButtonStyled";
 
 const Cart = () => {
@@ -42,8 +42,14 @@ const Cart = () => {
     router.push("login?redirect=/shipping");
   };
 
-  const updateCartHandler = (item, qty) => {
+  const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
+
+    const { data } = await axios.get(`/api/products/${item._id}`);
+
+    if (data.countInStock < quantity) {
+      return toast.error("Lo sentimos. El producto esta fuera de stock");
+    }
 
     dispatch({
       type: "CART_ADD_ITEM",
@@ -52,7 +58,10 @@ const Cart = () => {
         quantity,
       },
     });
+
+    toast.success("Producto actualizado en el carrito");
   };
+
 
   return (
     <Layout title="Shopping Cart">
@@ -141,7 +150,7 @@ const Cart = () => {
                       {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                     </div>
                   </li>
-                  
+
                   <li>
                     <ButtonCompany onClick={checkoutRouteHandler} primary>
                       Check Out
