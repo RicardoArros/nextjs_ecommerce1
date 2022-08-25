@@ -42,7 +42,8 @@ async function disconnect() {
   }
 }
 
-//
+// This funct Convert the mongoose obj docs to plain js object
+// converts the id of each doc to string and then replace the obj id with the string id
 function convertDocToObj(doc) {
   doc._id = doc._id.toString();
   doc.createdAt = doc.createdAt.toString();

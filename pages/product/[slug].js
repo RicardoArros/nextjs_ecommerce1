@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+
+import { toast } from "react-toastify";
 
 import axios from "axios";
 
@@ -60,9 +62,8 @@ const ProductDetail = (props) => {
     //
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
-    //
+    // Send ajax request and check content stock in the db
     const { data } = await axios.get(`/api/products/${product._id}`);
-
 
     if (data.countInStock < quantity) {
       return toast.error("Lo sentimos. el producto esta fuera de stock");
@@ -128,16 +129,21 @@ const ProductDetail = (props) => {
   );
 };
 
-//
+// Get data from the db.
+// Get the context. From the context get the params in the url and from the params get the slug.
 export async function getServerSideProps(context) {
+  //
   const { params } = context;
-
   const { slug } = params;
 
+  // Connect to the db 
   await db.connect();
 
+  // use findOne() method on the Product Model and filter products base the slug in the url. 
+  // Then use lean() method to convert to js object.
   const product = await Product.findOne({ slug }).lean();
 
+  // Disconnect from th db
   await db.disconnect();
 
   return {

@@ -36,7 +36,7 @@ const Layout = ({ title, children }) => {
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [open, setOpen] = useState(false);
 
-  //
+  // Initialize context
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
 

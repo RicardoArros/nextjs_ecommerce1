@@ -7,6 +7,8 @@ import Image from "next/image";
 
 import axios from "axios";
 
+import { toast } from "react-toastify";
+
 import { TiTimes } from "react-icons/ti";
 
 import { Store } from "../utils/Store";
@@ -26,31 +28,39 @@ import {
 import { ButtonCompany } from "../components/Button/ButtonStyled";
 
 const Cart = () => {
+  // Initialize context
   const { state, dispatch } = useContext(Store);
 
-  const router = useRouter();
-
+  //
   const {
     cart: { cartItems },
   } = state;
 
+  // Initialize router
+  const router = useRouter();
+
+  //
   const removeItemHandler = (item) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
 
+  //
   const checkoutRouteHandler = () => {
     router.push("login?redirect=/shipping");
   };
 
+  //
   const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
 
     const { data } = await axios.get(`/api/products/${item._id}`);
 
+    //Check the quantity in the backend api
     if (data.countInStock < quantity) {
-      return toast.error("Lo sentimos. El producto esta fuera de stock");
+      return toast.error("Lo sentimos. El producto no está en stock");
     }
 
+    //
     dispatch({
       type: "CART_ADD_ITEM",
       payload: {
@@ -59,9 +69,9 @@ const Cart = () => {
       },
     });
 
+    //
     toast.success("Producto actualizado en el carrito");
   };
-
 
   return (
     <Layout title="Shopping Cart">

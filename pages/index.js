@@ -5,7 +5,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import Layout from "../components/Layout/Layout";
-
 import ProductItem from "../components/Product/ProductItem";
 import { ProductsCont } from "../components/Product/ProductStyled";
 
@@ -60,9 +59,13 @@ const Home = ({ products }) => {
   );
 };
 
+// This funct runs before rendering the component and provides data for the component
+// Provides the products data from the db to the component
 export async function getServerSideProps() {
+  // Connect to the db
   await db.connect();
 
+  // Get products from Product Model. Then use lean() method to convert to js object.
   const products = await Product.find().lean();
 
   return {

@@ -26,7 +26,7 @@ const FormItem = styled.div(
 );
 
 const FormSubmit = styled.div(
-  ({ theme }) => `
+  () => `
 
   
    
@@ -34,7 +34,7 @@ const FormSubmit = styled.div(
 );
 
 const FormForgot = styled.div(
-  ({ theme }) => `
+  () => `
 
   
    

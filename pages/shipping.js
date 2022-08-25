@@ -22,7 +22,7 @@ import {
 import { ButtonCompany } from "../components/Button/ButtonStyled";
 
 const Shipping = () => {
-  //
+  // Initialize react hook form
   const {
     handleSubmit,
     register,
@@ -30,10 +30,10 @@ const Shipping = () => {
     setValue,
   } = useForm();
 
-  //
+  // Initialize router
   const router = useRouter();
 
-  //
+  // Initialize context
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { shippingAddress } = cart;
@@ -54,6 +54,7 @@ const Shipping = () => {
       payload: { fullName, address, city, postalCode, country },
     });
 
+    //
     Cookies.set(
       "cart",
       JSON.stringify({

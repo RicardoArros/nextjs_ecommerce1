@@ -44,7 +44,7 @@ const ProductDetailImg = styled.div(
 );
 
 const ProductDetailInfo = styled.div(
-  ({ theme }) => `  
+  () => `  
 
   & > h1 {
     font-size: 1.125rem;
@@ -54,13 +54,13 @@ const ProductDetailInfo = styled.div(
 );
 
 const ProductDetailCTA = styled.div(
-  ({ theme }) => `  
+  () => `  
   
   `
 );
 
 const ProductDetailCTAItem = styled.div(
-  ({ theme }) => `  
+  () => `  
   display: flex;
   justify-content: space-between;
 

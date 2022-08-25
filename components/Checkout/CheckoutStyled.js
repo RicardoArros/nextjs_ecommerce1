@@ -26,7 +26,7 @@ const CheckoutFormItem = styled.div(
 );
 
 const CheckoutFormSubmit = styled.div(
-  ({ theme }) => `  
+  () => `  
 
   display: flex;
   justify-content: space-between;
